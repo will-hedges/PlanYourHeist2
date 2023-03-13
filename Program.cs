@@ -22,19 +22,21 @@ namespace PlanYourHeist2
             rolodex.Add(kaci);
             rolodex.Add(morgan);
 
-            Console.WriteLine($"Current # operatives in rolodex = {rolodex.Count}");
-
+            Console.WriteLine($"Current # of operatives in rolodex = {rolodex.Count}");
             IRobber newRobber = CreateNewRobber();
+
             while (newRobber != null)
             {
                 rolodex.Add(newRobber);
-                Console.WriteLine($"Current # operatives in rolodex = {rolodex.Count}");
+                Console.WriteLine();
+                Console.WriteLine($"Current # of operatives in rolodex = {rolodex.Count}");
                 newRobber = CreateNewRobber();
             }
         }
 
         static IRobber CreateNewRobber()
         {
+            Console.WriteLine();
             Console.Write($"Enter a name for your new team member: ");
             string name = Console.ReadLine().Trim();
             if (name == "")
@@ -46,12 +48,13 @@ namespace PlanYourHeist2
             int specialty;
             while (true)
             {
+                Console.WriteLine();
                 Console.Write(
                     $@"Select a specialty for {name}
-        1) Hacker (disables alarms)
-        2) Muscle (disarms guards)
-        3) Lock Specialist (cracks vault)
-        : "
+    1) Hacker (disables alarms)
+    2) Muscle (disarms guards)
+    3) Lock Specialist (cracks vault)
+: "
                 );
 
                 string specialtyAnswer = Console.ReadLine().Trim();
@@ -61,11 +64,16 @@ namespace PlanYourHeist2
                 {
                     break;
                 }
+                else
+                {
+                    Console.WriteLine("Please enter a number: 1, 2, or 3.");
+                }
             }
 
             int skillLevel;
             while (true)
             {
+                Console.WriteLine();
                 Console.Write($"Enter a skill level (1-100) for {name}: ");
                 string skillAnswer = Console.ReadLine().Trim();
                 bool isNumber = int.TryParse(skillAnswer, out skillLevel);
@@ -74,11 +82,16 @@ namespace PlanYourHeist2
                 {
                     break;
                 }
+                else
+                {
+                    Console.WriteLine("Please enter a number between 1 and 100.");
+                }
             }
 
             int percentageCut;
             while (true)
             {
+                Console.WriteLine();
                 Console.Write($"Enter a percentage cut (1-100) for {name}: ");
                 string cutAnswer = Console.ReadLine().Trim();
                 bool isNumber = int.TryParse(cutAnswer, out percentageCut);
@@ -86,6 +99,10 @@ namespace PlanYourHeist2
                 if (isNumber && percentageCut >= 1 && percentageCut <= 100)
                 {
                     break;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a number between 1 and 100.");
                 }
             }
 
@@ -98,6 +115,7 @@ namespace PlanYourHeist2
                     return new Muscle(name, skillLevel, percentageCut);
                 case 3:
                     return new LockSpecialist(name, skillLevel, percentageCut);
+                // default case required, can return null to break loop
                 default:
                     return null;
             }
