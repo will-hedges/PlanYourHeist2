@@ -20,5 +20,12 @@ namespace PlanYourHeist2
                 Console.WriteLine($"{Name} has disabled the alarm!");
             }
         }
+
+        public Hacker(string name, int skillLevel, int percentageCut)
+        {
+            Name = name;
+            SkillLevel = skillLevel;
+            PercentageCut = percentageCut;
+        }
     }
 }

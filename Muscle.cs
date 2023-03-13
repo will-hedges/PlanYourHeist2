@@ -12,13 +12,20 @@ namespace PlanYourHeist2
         {
             bank.SecurityGuardScore -= SkillLevel;
             Console.WriteLine(
-                $"{Name} is handling the security guards. Guard security level reduced by {SkillLevel} points."
+                $"{Name} is disarming the security guards. Guard security level reduced by {SkillLevel} points."
             );
 
             if (bank.SecurityGuardScore <= 0)
             {
-                Console.WriteLine($"{Name} has neutralized the security guards!");
+                Console.WriteLine($"{Name} has disarmed the security guards!");
             }
+        }
+
+        public Muscle(string name, int skillLevel, int percentageCut)
+        {
+            Name = name;
+            SkillLevel = skillLevel;
+            PercentageCut = percentageCut;
         }
     }
 }
