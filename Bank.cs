@@ -11,7 +11,9 @@ namespace PlanYourHeist2
             get
             {
                 // If all the scores are less than or equal to 0, this should be false
-                if (CashOnHand <= 0 && AlarmScore <= 0 && VaultScore <= 0)
+                if (
+                    CashOnHand <= 0 && AlarmScore <= 0 && SecurityGuardScore <= 0 && VaultScore <= 0
+                )
                 {
                     return false;
                 }

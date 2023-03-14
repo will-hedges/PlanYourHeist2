@@ -14,13 +14,10 @@ namespace PlanYourHeist2
             LockSpecialist kaci = new LockSpecialist("Kaci Wooldrige", 50, 17);
             LockSpecialist morgan = new LockSpecialist("Morgan Ero", 55, 18);
 
-            List<IRobber> rolodex = new List<IRobber>();
-            rolodex.Add(matthew);
-            rolodex.Add(chris);
-            rolodex.Add(logan);
-            rolodex.Add(marek);
-            rolodex.Add(kaci);
-            rolodex.Add(morgan);
+            List<IRobber> rolodex = new List<IRobber>()
+            {
+                matthew, chris, logan, marek, kaci, morgan
+            };
 
             Console.WriteLine($"Current # of operatives in rolodex = {rolodex.Count}");
             IRobber newRobber = CreateNewRobber();
